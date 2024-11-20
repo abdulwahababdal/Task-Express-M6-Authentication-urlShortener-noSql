@@ -36,3 +36,12 @@ exports.signin = async (req, res, next) => {
     next(err);
   }
 };
+// Get Users
+exports.getUsers = async (req, res, next) => {
+  try {
+    const users = await User.find().populate("urls");
+    res.status(200).json(users);
+  } catch (err) {
+    next(err);
+  }
+};
